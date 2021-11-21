@@ -77,7 +77,7 @@ public class Plot {
 
     public void talkGuard() {
 
-        ui.mainTextArea.setText("YGuard: Hello stranger. I have never seen your face.\n I'm sorry we cannot let a stranger " +
+        ui.mainTextArea.setText("Guard: Hello stranger. I have never seen your face.\n I'm sorry we cannot let a stranger " +
                 "enter our town");
 
         if(silverRing == 0) {
@@ -135,7 +135,7 @@ public class Plot {
 
         ui.mainTextArea.setText("You wanna die?!\n\n" +
                 "The guard fought back and hit you\n\n" +
-                "(Damage: 5");
+                "(Damage: 5)");
 
         player.hp = player.hp - 3;
         ui.hpNumLabel.setText("" + player.hp);
@@ -153,7 +153,7 @@ public class Plot {
 
     public void crossRoad() {
 
-        ui.mainTextArea.setText("ou are at a crossroad.\n" +
+        ui.mainTextArea.setText("You are at a crossroad.\n" +
                 "If you go south, you will go back to the town");
 
         ui.choice1.setText("Go north");
@@ -210,7 +210,7 @@ public class Plot {
 
         int i = new java.util.Random().nextInt(100) + 1;
 
-        if(i < 90) {
+        if(i < 60) {
             monster = new monsterGoblin();
         } else {
             monster = new monsterBeast();
@@ -302,12 +302,12 @@ public class Plot {
     public void win() {
 
         ui.mainTextArea.setText("You have defeated the " + monster.name + "!\n" +
-                "The beast dropped a rare item\n\n" +
+                "The " + monster.name + "dropped a rare item\n\n" +
                 "You obtained a Silver Ring");
 
         silverRing = 1;
 
-        ui.choice1.setText("Go east");
+        ui.choice1.setText("CONTINUE");
         ui.choice2.setText("-");
         ui.choice3.setText("-");
         ui.choice4.setText("-");
@@ -320,12 +320,19 @@ public class Plot {
 
     public void lose() {
 
-        ui.mainTextArea.setText("You died!\n\nGAME OVER");
+        ui.mainTextArea.setText(" \n\n\n                                   You died!\n\n\n" +
+                "                               GAME OVER");
 
         ui.choice1.setText("CONTINUE");
         ui.choice2.setText("-");
         ui.choice3.setText("-");
         ui.choice4.setText("-");
+
+
+        ui.choice1.setVisible(false);
+        ui.choice2.setVisible(false);
+        ui.choice3.setVisible(false);
+        ui.choice4.setVisible(false);
 
         game.pos1 = "toTitle";
         game.pos2 = "";
@@ -335,8 +342,8 @@ public class Plot {
 
     public void ending() {
 
-        ui.mainTextArea.setText("Guard: I heard the news! Thank You, you are our town's hero!\n\n" +
-                "THE END");
+        ui.mainTextArea.setText("\n\nGuard: I heard the news! Thank You, you are our town's hero!\n\n" +
+                "\n\n                                 THE END");
 
         ui.choice1.setVisible(false);
         ui.choice2.setVisible(false);
